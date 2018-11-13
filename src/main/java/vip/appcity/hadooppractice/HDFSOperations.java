@@ -10,6 +10,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 
+/**
+ * @author songjie
+ */
 public class HDFSOperations {
     static Configuration config;
     static FileSystem fileSystem;
@@ -41,8 +44,8 @@ public class HDFSOperations {
     }
 
     public static void uploadfiles() throws IOException {
-        File file = new File("/Users/songjie/Documents/gitspace/hdfs-practice/README.md");
-        Path path = new Path("/test/1");
+        File file = new File("/Users/songjie/Documents/gitspace/hdfs-practice/src/main/resources/wc.txt");
+        Path path = new Path("/wc/input/wc.txt");
         FSDataOutputStream fsDataOutputStream= fileSystem.create(path);
         IOUtils.copyBytes(new FileInputStream(file),fsDataOutputStream,config);
         System.out.println("上传结束");
@@ -51,7 +54,7 @@ public class HDFSOperations {
 
     public static void downloadfile() throws IOException {
         File file = new File("/Users/songjie/Documents/gitspace/hdfs-practice/src/main/resources/t.md");
-        Path path = new Path("/test/1");
+        Path path = new Path("/wc/output/part-r-00000");
         FSDataInputStream fsDataInputStream = fileSystem.open(path);
         FileOutputStream fos = new FileOutputStream(file);
         IOUtils.copyBytes(fsDataInputStream,fos,config);
@@ -73,12 +76,12 @@ public class HDFSOperations {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         config = new Configuration();
-        config.set("fs.defaultFS","hdfs://sj-node1:8020");
-        fileSystem = FileSystem.get(URI.create("hdfs://sj-node1:8020"),config,"root");
+        config.set("fs.defaultFS","hdfs://sj-node2:8020");
+        fileSystem = FileSystem.get(URI.create("hdfs://sj-node2:8020"),config,"root");
 //        mkdir();
-        listDic();
+//        listDic();
 //        uploadfiles();
-//        downloadfile();
+        downloadfile();
         listFiles();
 
     }
