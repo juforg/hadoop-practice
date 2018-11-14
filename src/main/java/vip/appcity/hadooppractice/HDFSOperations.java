@@ -77,7 +77,8 @@ public class HDFSOperations {
     public static void main(String[] args) throws IOException, InterruptedException {
         config = new Configuration();
         config.set("fs.defaultFS","hdfs://sj-node1:8020");
-        fileSystem = FileSystem.get(URI.create("hdfs://sj-node1:8020"),config,"root");
+//        fileSystem = FileSystem.get(URI.create("hdfs://sj-node1:8020"),config,"root");
+        fileSystem = FileSystem.get(config);
 //        mkdir();
 //        listDic();
 //        uploadfiles();

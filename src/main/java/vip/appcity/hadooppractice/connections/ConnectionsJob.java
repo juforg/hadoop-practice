@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class ConnectionsJob {
     public static void main(String[] args) {
+        System.setProperty("HADOOP_USER_NAME", "root");
         Boolean flag = jobOne();
         if (flag) {
             jobTwo();
@@ -20,8 +21,6 @@ public class ConnectionsJob {
 
     static Boolean jobOne() {
         Boolean flag = true;
-        System.setProperty("HADOOP_USER_NAME", "root");
-
         Configuration config = new Configuration();
         config.set("fs.defaultFS", "hdfs://sj-node1:8020");
         config.set("yarn.resourcemanager.hostname", "sj-node03:8088");
