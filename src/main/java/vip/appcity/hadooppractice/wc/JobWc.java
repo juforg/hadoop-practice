@@ -17,9 +17,10 @@ import java.net.URI;
  */
 public class JobWc {
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+        System.setProperty("HADOOP_USER_NAME", "root");
         Configuration config = new Configuration();
         // 在代码中设置JVM系统参数，用于给job对象来获取访问HDFS的用户身份
-        System.setProperty("HADOOP_USER_NAME", "root");
+
         config.set("fs.defaultFS","hdfs://sj-node2:8020");
         config.set("yarn.resourcemanager.hostname","sj-node3:8088");
         Job job= Job.getInstance(config);

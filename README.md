@@ -3,7 +3,8 @@
 > hadoop2 环境搭建参看我的博客 http://blog.appcity.vip
 
 - hdfs-基本操作 增删改查
-- mapreduce- 统计个数 wordcount
+- MapReduce- 统计个数 wordcount
+- MapReduce - 二度人脉 connections
 
 
 ## 参考
