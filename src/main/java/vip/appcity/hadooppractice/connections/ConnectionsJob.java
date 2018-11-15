@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class ConnectionsJob {
     public static void main(String[] args) {
-        System.setProperty("HADOOP_USER_NAME", "root");
+        System.setProperty("HADOOP_USER_NAME", "root");  // 不加此行 本地运行则可能会报权限问题
         Boolean flag = jobOne();
         if (flag) {
             jobTwo();
@@ -22,8 +22,8 @@ public class ConnectionsJob {
     static Boolean jobOne() {
         Boolean flag = true;
         Configuration config = new Configuration();
-        config.set("fs.defaultFS", "hdfs://sj-node1:8020");
-        config.set("yarn.resourcemanager.hostname", "sj-node03:8088");
+//        config.set("fs.defaultFS", "hdfs://sj-node1:8020"); // 提交jar包到服务器时 需把这里注释掉 本地运行则放开
+//        config.set("yarn.resourcemanager.hostname", "sj-node03:8088");
 
         try {
             Job job = Job.getInstance(config);
@@ -64,8 +64,8 @@ public class ConnectionsJob {
     static Boolean jobTwo() {
         Boolean flag = true;
         Configuration config = new Configuration();
-        config.set("fs.defaultFS","hdfs://sj-node1:8020");
-        config.set("yarn.resourcemanager.hostname","sj-node3:8088");
+        /*config.set("fs.defaultFS","hdfs://sj-node1:8020"); // 提交jar包到服务器时 需把这里注释掉 本地运行则放开
+        config.set("yarn.resourcemanager.hostname","sj-node3:8088");*/
         try {
             Job job = Job.getInstance(config);
             job.setJarByClass(ConnectionsJob.class);

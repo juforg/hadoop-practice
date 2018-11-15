@@ -76,7 +76,7 @@ public class HDFSOperations {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         config = new Configuration();
-        config.set("fs.defaultFS","hdfs://sj-node1:8020");
+        config.set("fs.defaultFS","hdfs://sj-node1:8020"); // 提交jar包到服务器时 需把这里注释掉 本地运行则放开
 //        fileSystem = FileSystem.get(URI.create("hdfs://sj-node1:8020"),config,"root");
         fileSystem = FileSystem.get(config);
 //        mkdir();
